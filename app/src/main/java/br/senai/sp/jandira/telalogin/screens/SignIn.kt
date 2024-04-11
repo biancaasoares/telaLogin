@@ -3,6 +3,7 @@ package br.senai.sp.jandira.telalogin.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,11 +38,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.senai.sp.jandira.telalogin.R
 import br.senai.sp.jandira.telalogin.ui.theme.TelaLoginTheme
 
 @Composable
-fun SignIn() {
+fun SignIn(controleDeNavegacao: NavHostController) {
 
     var  nomeState= remember {
         mutableStateOf("")
@@ -227,7 +229,7 @@ fun SignIn() {
 
                     ) {
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { controleDeNavegacao.navigate("TelaInicio")},
                         colors = ButtonDefaults.buttonColors(Color(0xffCf06f0)),
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -244,7 +246,12 @@ fun SignIn() {
                         text = "Already have an account?", color = Color.Gray
                     )
                     Text(
-                        text = "Sign In", color = Color(0xffCf06f0)
+                        text = "Sign In",
+                        color = Color(0xffCf06f0),
+                        modifier = Modifier
+                            .clickable{
+                                controleDeNavegacao.navigate("telaLogin")
+                            },
                     )
                 }
             }
@@ -267,6 +274,6 @@ fun SignIn() {
 @Composable
 fun SignInPreview() {
     TelaLoginTheme {
-        SignIn()
+     //   SignIn()
     }
 }

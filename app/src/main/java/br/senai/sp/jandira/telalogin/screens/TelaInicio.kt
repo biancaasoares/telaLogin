@@ -44,11 +44,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.senai.sp.jandira.telalogin.R
 import br.senai.sp.jandira.telalogin.ui.theme.TelaLoginTheme
 
 @Composable
-fun TelaInicio() {
+fun TelaInicio(controleDeNavegacao: NavHostController) {
 
   var procuraState = remember {
       mutableStateOf("")
@@ -296,6 +297,6 @@ fun TelaInicio() {
 @Composable
 fun TelaInicioPreview() {
     TelaLoginTheme {
-        TelaInicio()
+      //  TelaInicio()
     }
 }

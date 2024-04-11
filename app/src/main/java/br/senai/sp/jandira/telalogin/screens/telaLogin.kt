@@ -2,6 +2,7 @@ package br.senai.sp.jandira.telalogin.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,11 +33,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.senai.sp.jandira.telalogin.R
 import br.senai.sp.jandira.telalogin.ui.theme.TelaLoginTheme
 
 @Composable
-fun TelaLogin() {
+fun TelaLogin(controleDeNavegacao: NavHostController) {
 
     var emailState= remember {
         mutableStateOf("")
@@ -46,8 +48,13 @@ fun TelaLogin() {
         mutableStateOf("")
     }
 
+    var mensagemErroState = remember {
+        mutableStateOf("")
+    }
 
-    Surface {
+    Surface(
+        modifier = Modifier.fillMaxSize().background(Color.Magenta)
+    ) {
         Column(
             modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween
         ) {
@@ -149,9 +156,14 @@ fun TelaLogin() {
                         horizontalArrangement = Arrangement.End
                     ) {
                         Button(
-                            onClick = { /*TODO*/ },
-                            colors = ButtonDefaults.buttonColors(Color(0xffCf06f0)),
-                            modifier = Modifier
+                            onClick = { if (emailState.value == "bianca" && senhaState.value == "1234"){
+                                mensagemErroState.value = ""
+
+                                controleDeNavegacao.navigate("home")
+                            } else {
+                                mensagemErroState.value = "Email ou senha incorretos"
+                            } },
+                            colors = ButtonDefaults.buttonColors(Color(0xffCf06f0))
                         ) {
                             Text(
                                 text = "Sign In ->"
@@ -165,7 +177,12 @@ fun TelaLogin() {
                             text = "Dont't have an account?", color = Color.Gray
                         )
                         Text(
-                            text = "Sign In", color = Color(0xffCf06f0)
+                            text = "Sign Up", color = Color(0xffCf06f0),
+                            modifier = Modifier
+                                .clickable{
+                                controleDeNavegacao.navigate("TelaSignIn")
+                            },
+
                         )
                     }
                 }
@@ -188,6 +205,6 @@ fun TelaLogin() {
 @Composable
 fun GreetingPreview() {
     TelaLoginTheme {
-       TelaLogin()
+      //TelaLogin(controleDeNavegacao)
     }
 }
