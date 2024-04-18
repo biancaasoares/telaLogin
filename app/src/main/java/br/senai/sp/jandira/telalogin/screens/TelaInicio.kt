@@ -46,14 +46,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.telalogin.R
+import br.senai.sp.jandira.telalogin.repository.ViagemRepository
 import br.senai.sp.jandira.telalogin.ui.theme.TelaLoginTheme
 
 @Composable
+
+
 fun TelaInicio(controleDeNavegacao: NavHostController) {
 
-  var procuraState = remember {
+
+    val viagens = ViagemRepository().listarTodasAsViagens()
+
+    var procuraState = remember {
       mutableStateOf("")
-  }
+    }
 
     Surface (
         modifier = Modifier.fillMaxSize(),
@@ -224,67 +230,65 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                 Row {
                     Text(text = "Past Trips")
                 }
-
                 Spacer(modifier = Modifier.height(10.dp))
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    items(3)
-                    {
-                        Card (
+                
+                LazyColumn{
+                    items(viagens){
+                        Card(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(250.dp)
-                                .shadow(10.dp),
-                            colors = CardDefaults
-                                .cardColors(
-                                    containerColor = Color.White
-                                )
+                                .padding(horizontal = 16.dp, vertical = 4.dp)
                         ) {
-                            Image(
-                                painterResource(id = R.drawable.londres),
-                                contentDescription = "",
-                                contentScale = ContentScale.Crop,
+                            Column (
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(30.dp),
-                            )
-
-                            Column(
-                                modifier = Modifier
-                                    .padding(start = 10.dp)
-                            ) {
-                                Row(
-                                    modifier = Modifier
-                                        .padding( bottom = 10.dp)
-                                ) {
-                                    Text(text = "London, 2019",
-                                        color = Color(0xFF7E24FF),
-                                        fontWeight = FontWeight.Bold)
-                                }
-                                Row(
-                                    modifier = Modifier
-                                        .padding( bottom = 10.dp)
-                                ) {
-                                    Text(text = "London is the capital and largest city of  the United Kingdom, with a population of just under 9 million.",
-                                        fontSize = 14.sp,
-                                        color = Color(0xffA09C9C)
-                                    )
-                                }
-                                Row(
+                            ){
+                                Surface (
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .padding(end = 10.dp),
-                                    horizontalArrangement = Arrangement.End
-                                ) {
-                                    Text(text = "18 Feb - 21 Feb",
-                                        color = Color(0xFF7E24FF),
-                                        fontSize = 12.sp
+                                        .height(180.dp)
+                                ){
+                                    Image(painter = if (it.imagem == null) painterResource(id = R.drawable.image_not_available) else it.imagem!!,
+                                        contentDescription = "",
+                                        contentScale = ContentScale.Crop
                                     )
                                 }
+                                Column(
+                                    modifier = Modifier.padding(8.dp)
+                                ) {
+                                    Text(text = it.descricao,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(top = 16.dp)
+                                    ) {
+                                        Row(
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Icon(
+                                                imageVector = Icons.Default.Place ,
+                                                contentDescription = "",
+                                                tint = Color.Magenta
+                                            )
+                                            Text(text = "${it.destino},${it.dataChegada.year}",
+                                                fontSize = 12.sp
+                                            )
+                                        }
+                                        Row {
+                                            Text(text = "${encurtarData(it.dataChegada)} - ${encurtarData(it.dataPartida)}",
+                                                fontSize = 12.sp
+                                            )
+
+                                        }
+                                    }
+                                }
+
                             }
                         }
-                        Spacer(modifier = Modifier.height(15.dp))
                     }
                 }
             }

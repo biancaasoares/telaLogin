@@ -159,7 +159,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                             onClick = { if (emailState.value == "bianca" && senhaState.value == "1234"){
                                 mensagemErroState.value = ""
 
-                                controleDeNavegacao.navigate("home")
+                                controleDeNavegacao.navigate("TelaInicio")
                             } else {
                                 mensagemErroState.value = "Email ou senha incorretos"
                             } },
