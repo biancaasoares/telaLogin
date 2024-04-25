@@ -54,7 +54,6 @@ import br.senai.sp.jandira.telalogin.ultils.encurtarData
 
 @Composable
 
-
 fun TelaInicio(controleDeNavegacao: NavHostController) {
 
     val categorias = CategoriasRepository().listarTodasAsCategorias()
@@ -95,7 +94,7 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                         border = BorderStroke(2.dp, Color.White)
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.perfil),
+                            painter = painterResource(id = R.drawable.usuario),
                             contentDescription = "",
                             contentScale = ContentScale.Crop,
                         )
@@ -261,10 +260,12 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                                 ) {
                                     Text(text = "${it.destino},${it.dataChegada.year}",
                                         fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold,
                                         color = Color(0xFF9C27B0)
                                     )
                                     Text(text = it.descricao,
-                                        fontSize = 17.sp
+                                        fontSize = 17.sp,
+                                        color = Color(0xffA09C9C)
                                     )
                                     Row(
                                         verticalAlignment = Alignment.CenterVertically,
