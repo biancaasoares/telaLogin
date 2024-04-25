@@ -164,7 +164,7 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                             shape = RoundedCornerShape(10.dp),
                             colors = ButtonDefaults
                                 .buttonColors(
-                                    containerColor = Color(0xFF7E24FF)
+                                    containerColor = Color(0xFF9C27B0)
                                 ),
                             modifier = Modifier
                                 .height(80.dp)
@@ -259,8 +259,12 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                                 Column(
                                     modifier = Modifier.padding(8.dp)
                                 ) {
+                                    Text(text = "${it.destino},${it.dataChegada.year}",
+                                        fontSize = 20.sp,
+                                        color = Color(0xFF9C27B0)
+                                    )
                                     Text(text = it.descricao,
-                                        fontWeight = FontWeight.Bold
+                                        fontSize = 17.sp
                                     )
                                     Row(
                                         verticalAlignment = Alignment.CenterVertically,
@@ -272,21 +276,12 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                                         Row(
                                             verticalAlignment = Alignment.CenterVertically
                                         ) {
-                                            Icon(
-                                                imageVector = Icons.Default.Place ,
-                                                contentDescription = "",
-                                                tint = Color.Magenta
-                                            )
-                                            Text(text = "${it.destino},${it.dataChegada.year}",
-                                                fontSize = 12.sp
-                                            )
-                                        }
-                                        Row {
                                             Text(text = "${encurtarData(it.dataChegada)} - ${encurtarData(it.dataPartida)}",
-                                                fontSize = 12.sp
+                                                fontSize = 12.sp,
+                                                color = Color(0xFF9C27B0)
                                             )
-
                                         }
+
                                     }
                                 }
 
