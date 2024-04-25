@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -46,15 +47,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.telalogin.R
+import br.senai.sp.jandira.telalogin.repository.CategoriasRepository
 import br.senai.sp.jandira.telalogin.repository.ViagemRepository
 import br.senai.sp.jandira.telalogin.ui.theme.TelaLoginTheme
+import br.senai.sp.jandira.telalogin.ultils.encurtarData
 
 @Composable
 
 
 fun TelaInicio(controleDeNavegacao: NavHostController) {
 
-
+    val categorias = CategoriasRepository().listarTodasAsCategorias()
     val viagens = ViagemRepository().listarTodasAsViagens()
 
     var procuraState = remember {
@@ -155,7 +158,7 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                 LazyRow(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    items(4) {
+                    items(categorias){
                         Button(
                             onClick = {},
                             shape = RoundedCornerShape(10.dp),
@@ -172,14 +175,14 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                             ) {
                                 Row {
                                     Image(
-                                        painterResource(id = R.drawable.mountain) ,
+                                        painter = if (it.imagem == null) painterResource(id = R.drawable.noimage) else it.imagem!!,
                                         contentDescription = "",
                                         modifier = Modifier
                                             .size(30.dp)
                                     )
                                 }
                                 Row {
-                                    Text(text = "Montain")
+                                    Text(text = it.nome)
                                 }
                             }
                         }
@@ -248,7 +251,7 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                                         .fillMaxWidth()
                                         .height(180.dp)
                                 ){
-                                    Image(painter = if (it.imagem == null) painterResource(id = R.drawable.image_not_available) else it.imagem!!,
+                                    Image(painter = if (it.imagem == null) painterResource(id = R.drawable.noimage) else it.imagem!!,
                                         contentDescription = "",
                                         contentScale = ContentScale.Crop
                                     )
@@ -301,6 +304,6 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
 @Composable
 fun TelaInicioPreview() {
     TelaLoginTheme {
-      //  TelaInicio()
+
     }
 }
