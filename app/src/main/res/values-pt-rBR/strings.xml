@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">telaLogin</string>
+    <string name="tela_login">Entrar</string>
+    <string name="tela_login_phrase">Faça login para continuar</string>
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="button_signin">Entrar -></string>
+    <string name="dont_account">Não tem uma conta?</string>
+    <string name="signUp_login">Criar conta</string>
+
+
+
+
+</resources>
