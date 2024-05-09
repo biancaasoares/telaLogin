@@ -9,7 +9,16 @@
     <string name="dont_account">Não tem uma conta?</string>
     <string name="signUp_login">Criar conta</string>
 
+    <string name="signUp">Cadastre-se</string>
+    <string name="create_phrase">Crie uma nova conta</string>
+    <string name="username">Usuário</string>
+    <string name="phone">Telefone</string>
+    <string name="email_signUp">E-mail</string>
+    <string name="password_signUp">Senha</string>
+    <string name="create_account">Criar Conta</string>
+    <string name="signUp_phrase">Já tem uma conta?</string>
+    <string name="signIn">Entrar</string>
 
-
+    <string name="home_phrase">Você está em Paris</string>
 
 </resources>

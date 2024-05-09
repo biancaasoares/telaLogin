@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -79,14 +80,14 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Sign up",
+                    text = stringResource(id = R.string.signUp),
                     fontSize = 50.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xffCf06f0),
                     modifier = Modifier.padding(start = 2.dp),
                 )
                 Text(
-                    text = "Create a new account",
+                    text = stringResource(id = R.string.create_phrase),
                     modifier = Modifier.padding(start = 2.dp),
                     color = Color(0xffA09C9C),
                 )
@@ -132,7 +133,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                         ), contentDescription = "icone de perfil", modifier = Modifier.width(25.dp)
                     )
                     Text(
-                        text = "Username",
+                        text = stringResource(id = R.string.username),
                         fontFamily = FontFamily.Default,
                         modifier = Modifier.padding(start = 30.dp)
                     )
@@ -155,7 +156,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                         ), contentDescription = "icone de celular", modifier = Modifier.width(25.dp)
                     )
                     Text(
-                        text = "Phone",
+                        text = stringResource(id = R.string.phone),
                         fontFamily = FontFamily.Default,
                         modifier = Modifier.padding(start = 30.dp)
                     )
@@ -181,7 +182,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                         ), contentDescription = "icone de email", modifier = Modifier.width(25.dp)
                     )
                     Text(
-                        text = "E-mail",
+                        text = stringResource(id = R.string.email_signUp),
                         fontFamily = FontFamily.Default,
                         modifier = Modifier.padding(start = 30.dp)
 
@@ -209,7 +210,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                         ), contentDescription = "icone de senha", modifier = Modifier.width(25.dp)
                     )
                     Text(
-                        text = "Password",
+                        text = stringResource(id = R.string.password_signUp),
                         fontFamily = FontFamily.Default,
                         modifier = Modifier.padding(start = 30.dp)
                     )
@@ -234,7 +235,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "CREATE ACCOUNT"
+                            text = stringResource(id = R.string.create_account)
                         )
                     }
 
@@ -243,10 +244,10 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                     modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End
                 ) {
                     Text(
-                        text = "Already have an account?", color = Color.Gray
+                        text = stringResource(id = R.string.signUp_phrase), color = Color.Gray
                     )
                     Text(
-                        text = "Sign In",
+                        text = stringResource(id = R.string.signIn),
                         color = Color(0xffCf06f0),
                         modifier = Modifier
                             .clickable{

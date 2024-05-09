@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -53,7 +54,9 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
     }
 
     Surface(
-        modifier = Modifier.fillMaxSize().background(Color.Magenta)
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Magenta)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween
@@ -73,14 +76,14 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                     .padding(start = 24.dp)
             ) {
                 Text(
-                    text = "Login",
+                    text = stringResource(id = R.string.tela_login),
                     fontSize = 62.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xffCf06f0),
                     modifier = Modifier.padding(start = 2.dp),
                 )
                 Text(
-                    text = "Please sign in to continue",
+                    text = stringResource(id = R.string.tela_login_phrase),
                     modifier = Modifier.padding(start = 2.dp),
                     color = Color(0xffA09C9C),
                 )
@@ -105,7 +108,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                             modifier = Modifier.width(25.dp)
                         )
                         Text(
-                            text = "E-mail",
+                            text = stringResource(id = R.string.email),
                             fontFamily = FontFamily.Default,
                             modifier = Modifier.padding(start = 30.dp)
 
@@ -136,7 +139,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                             modifier = Modifier.width(25.dp)
                         )
                         Text(
-                            text = "Password",
+                            text = stringResource(id = R.string.password),
                             fontFamily = FontFamily.Default,
                             modifier = Modifier.padding(start = 30.dp)
                         )
@@ -166,7 +169,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                             colors = ButtonDefaults.buttonColors(Color(0xffCf06f0))
                         ) {
                             Text(
-                                text = "Sign In ->"
+                                text = stringResource(id = R.string.button_signin)
                             )
                         }
                     }
@@ -174,10 +177,10 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                         modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End
                     ) {
                         Text(
-                            text = "Dont't have an account?", color = Color.Gray
+                            text = stringResource(id = R.string.dont_account), color = Color.Gray
                         )
                         Text(
-                            text = "Sign Up", color = Color(0xffCf06f0),
+                            text = stringResource(id = R.string.signUp_login), color = Color(0xffCf06f0),
                             modifier = Modifier
                                 .clickable{
                                 controleDeNavegacao.navigate("TelaSignIn")
@@ -205,6 +208,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
 @Composable
 fun GreetingPreview() {
     TelaLoginTheme {
+
       //TelaLogin(controleDeNavegacao)
     }
 }

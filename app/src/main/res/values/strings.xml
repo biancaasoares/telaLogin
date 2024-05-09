@@ -10,5 +10,18 @@
     <string name="signUp_login">Sign Up</string>
 
 
+    <string name="signUp">Sign Up</string>
+    <string name="create_phrase">Create a new account</string>
+    <string name="username">Username</string>
+    <string name="phone">Phone</string>
+    <string name="email_signUp">E-mail</string>
+    <string name="password_signUp">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="signUp_phrase">Already have an account?</string>
+    <string name="signIn">Sign in</string>
+
+    <string name="home_phrase">You\'re in Paris</string>
+
+
 
 </resources>
