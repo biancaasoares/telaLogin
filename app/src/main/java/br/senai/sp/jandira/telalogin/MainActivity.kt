@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.telalogin.screens.SignIn
 import br.senai.sp.jandira.telalogin.screens.TelaInicio
 import br.senai.sp.jandira.telalogin.screens.TelaLogin
+import br.senai.sp.jandira.telalogin.screens.UsuariosDbScreen
 import br.senai.sp.jandira.telalogin.ui.theme.TelaLoginTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,7 +51,7 @@ fun Greeting() {
 @Composable
 fun GreetingPreview() {
     TelaLoginTheme{
-     //  TelaLogin()
+            UsuariosDbScreen()
     }
     }
 

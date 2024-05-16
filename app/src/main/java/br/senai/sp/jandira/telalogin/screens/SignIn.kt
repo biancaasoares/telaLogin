@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -41,18 +42,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.telalogin.R
+import br.senai.sp.jandira.telalogin.model.Usuario
+import br.senai.sp.jandira.telalogin.repository.UsuarioRepository
 import br.senai.sp.jandira.telalogin.ui.theme.TelaLoginTheme
 
 @Composable
 fun SignIn(controleDeNavegacao: NavHostController) {
 
-    var  nomeState= remember {
+    val cr = UsuarioRepository(LocalContext.current)
+
+    var nomeState = remember {
         mutableStateOf("")
     }
-    var  numeroState= remember {
+    var numeroState = remember {
         mutableStateOf("")
     }
-    var emailState= remember {
+    var emailState = remember {
         mutableStateOf("")
     }
     var senhaState = remember {
@@ -161,7 +166,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                         modifier = Modifier.padding(start = 30.dp)
                     )
                 },
-                keyboardOptions =  KeyboardOptions(
+                keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number
                 )
             )
@@ -188,7 +193,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
 
                     )
                 },
-                keyboardOptions =  KeyboardOptions(
+                keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email
                 )
             )
@@ -215,7 +220,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                         modifier = Modifier.padding(start = 30.dp)
                     )
                 },
-                keyboardOptions =  KeyboardOptions(
+                keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Password
                 ),
                 visualTransformation = PasswordVisualTransformation()
@@ -230,7 +235,15 @@ fun SignIn(controleDeNavegacao: NavHostController) {
 
                     ) {
                     Button(
-                        onClick = { controleDeNavegacao.navigate("TelaInicio")},
+                        onClick = {
+                            val usuario = Usuario(
+                                usuario = nomeState.value,
+                                telefone = numeroState.value,
+                                email = emailState.value,
+                                )
+                            cr.salvar(usuario)
+                            controleDeNavegacao.navigate("telaLogin")
+                        },
                         colors = ButtonDefaults.buttonColors(Color(0xffCf06f0)),
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -250,7 +263,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                         text = stringResource(id = R.string.signIn),
                         color = Color(0xffCf06f0),
                         modifier = Modifier
-                            .clickable{
+                            .clickable {
                                 controleDeNavegacao.navigate("telaLogin")
                             },
                     )
@@ -275,6 +288,6 @@ fun SignIn(controleDeNavegacao: NavHostController) {
 @Composable
 fun SignInPreview() {
     TelaLoginTheme {
-     //   SignIn()
+        //   SignIn()
     }
 }
