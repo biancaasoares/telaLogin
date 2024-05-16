@@ -21,7 +21,14 @@
     <string name="signIn">Sign in</string>
 
     <string name="home_phrase">You\'re in Paris</string>
-
-
+    <string name="categories">Categories</string>
+    <string name="montain">Montain</string>
+    <string name="snow">Snow</string>
+    <string name="beach">Beach</string>
+    <string name="city">City</string>
+    <string name="touristics">Touristics</string>
+    <string name="hotel">Hotel</string>
+    <string name="search_destiny">Search your destiny</string>
+    <string name="past_trips">Past Trips</string>
 
 </resources>

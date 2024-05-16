@@ -41,6 +41,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -128,7 +129,7 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                                 .size(20.dp)
                         )
                         Text(
-                            text = "You're in Paris",
+                            text = stringResource(id = R.string.home_phrase),
                             color = Color.White
                         )
                     }
@@ -151,7 +152,7 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                     .padding(top = 20.dp, start = 20.dp)
             ) {
                 Row {
-                    Text(text = "Categories")
+                    Text(text = stringResource(id = R.string.categories))
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 LazyRow(
@@ -213,7 +214,7 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                     },
                     label = {
                         Text(
-                            text = "Search your destiny",
+                            text = stringResource(id = R.string.search_destiny),
                             color = Color(0xffA09C9C)
                         )
                     },
@@ -230,7 +231,7 @@ fun TelaInicio(controleDeNavegacao: NavHostController) {
                     .padding(top = 20.dp, start = 20.dp, end = 20.dp)
             ) {
                 Row {
-                    Text(text = "Past Trips")
+                    Text(text = stringResource(id = R.string.past_trips))
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 
