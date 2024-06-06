@@ -13,4 +13,7 @@ interface UsuarioDao {
 
     @Query("SELECT * FROM tbl_usuarios ORDER BY usuario ASC")
     fun listarTodosOsUsuarios(): List<Usuario>
+
+    @Query("SELECT * FROM tbl_usuarios WHERE email =:email AND senha =:senha")
+    fun logar (email:String, senha:String): Boolean
 }

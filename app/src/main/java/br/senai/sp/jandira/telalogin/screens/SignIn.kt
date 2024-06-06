@@ -240,6 +240,7 @@ fun SignIn(controleDeNavegacao: NavHostController) {
                                 usuario = nomeState.value,
                                 telefone = numeroState.value,
                                 email = emailState.value,
+                                senha = senhaState.value
                                 )
                             cr.salvar(usuario)
                             controleDeNavegacao.navigate("telaLogin")

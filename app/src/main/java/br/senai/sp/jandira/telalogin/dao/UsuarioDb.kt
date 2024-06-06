@@ -11,7 +11,6 @@ abstract class UsuarioDb : RoomDatabase() {
 
     abstract fun usuarioDao(): UsuarioDao
 
-
     companion object{
         private lateinit var instancia: UsuarioDb
 

@@ -44,7 +44,7 @@ import br.senai.sp.jandira.telalogin.ui.theme.TelaLoginTheme
 @Composable
 fun TelaLogin(controleDeNavegacao: NavHostController) {
 
-
+    val cr = UsuarioRepository(LocalContext.current)
 
     var emailState= remember {
         mutableStateOf("")
@@ -164,13 +164,17 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                         horizontalArrangement = Arrangement.End
                     ) {
                         Button(
-                            onClick = { if (emailState.value == "bianca" && senhaState.value == "1234"){
-                                mensagemErroState.value = ""
+                            onClick = {
+                                if (emailState.value == "" || senhaState.value == ""){
+                                    mensagemErroState.value = "Email ou senhas incorretos"
+                                } else {
+                                    val usuario = cr.validaLogin(emailState.value, senhaState.value)
 
-                                controleDeNavegacao.navigate("TelaInicio")
-                            } else {
-                                mensagemErroState.value = "Email ou senha incorretos"
-                            } },
+                                    if(usuario){
+                                        controleDeNavegacao.navigate("TelaInicio")
+                                    }
+                                }
+                            },
                             colors = ButtonDefaults.buttonColors(Color(0xffCf06f0))
                         ) {
                             Text(
